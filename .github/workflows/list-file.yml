@@ -1,0 +1,26 @@
+name: Setup and List Files
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  setup-and-list-files:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository content
+      uses: actions/checkout@v2
+
+    - name: Create a new directory
+      run: mkdir -p usecase1/new_folder
+
+    - name: Create a new file
+      run: echo "This is a new file" > usecase1/new_folder/new_file.txt
+
+    - name: List files in repository
+      run: |
+        echo "Listing all files in the repository:"
+        find .
